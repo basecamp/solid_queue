@@ -78,7 +78,7 @@ module SolidQueue
       end
 
       def finished!
-        if SolidQueue.preserve_finished_jobs?
+        if SolidQueue.preserve_finished_jobs? || batch_id.present?
           touch(:finished_at)
         else
           destroy!
