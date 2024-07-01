@@ -3,8 +3,7 @@
 class SolidQueue::Process < SolidQueue::Record
   include Prunable
 
-  belongs_to :supervisor, class_name: "SolidQueue::Process", optional: true, inverse_of: :forks
-  has_many :forks, class_name: "SolidQueue::Process", inverse_of: :supervisor, foreign_key: :supervisor_id, dependent: :destroy
+  belongs_to :supervisor, class_name: "SolidQueue::Process", optional: true
   has_many :claimed_executions
 
   store :metadata, coder: JSON
